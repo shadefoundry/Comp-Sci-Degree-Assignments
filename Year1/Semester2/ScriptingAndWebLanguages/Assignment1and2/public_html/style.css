@@ -1,0 +1,161 @@
+/*Beginning of sheet*/
+/*This css sheet was designed by Kevin Lopez for the Scripting and Web Languages
+class. The title "Captain Morgan.css" is a reference to both the spiced rum
+(which I am a fan of) as well as the song "Captain Morgan's Revenge", by the
+band Alestorm.*/
+body{/*class that deals with body text, basic formatting*/
+	margin: 0;/*no margins!*/
+	padding: 0;
+	border: 0;/*sets border to nothing*/
+	overflow: hidden; /*hides overflows*/
+	height: 100%; 
+	max-height: 100%;
+        background: green;
+        color: white;
+        font-family:Comic Sans MS;
+        text-align: center;
+        background-image: url(mad-space.gif);
+}
+/*Everything in the sidebar is centered. The background is a hideous blue space
+image because this is the 90s and backgrounds only exist to shatter retinas*/
+#sidebar
+{
+	width:225px;
+	height:100%;
+	top:0%;
+	left:0%;
+	right:0%;
+	overflow: hidden;
+	position: fixed;
+        background: #003366;
+        text-align: center;
+        background-image: url(bg.jpg);
+}
+/*The main content div also has everything centered and in comic sans. NINETIES!*/
+#maincontent{/*This section controls how the main section were all the information can be found is, uses <div> command*/
+	position: absolute; /*stops the area from being changed*/
+	top: 0%; /*starts were the header ends*/
+	left: 225px;
+	right: 0px;
+	bottom: 0px; /*ends were the footer starts*/
+	overflow: auto;
+        background:black;/*main background color. This goes under the background
+        image just in case the user is living in the 90s and has a flip phone that
+        doesn't support images or something.*/
+        background-image: url(mad-space.gif);/*Image that goes over the background
+        if the browser supports images.*/
+        padding: 10px;
+        text-align: center;
+}
+#navbar
+{
+	width:100%;
+	height:64px;
+	top:0%;
+	left:0%;
+	right:0%;
+	overflow: hidden;
+	position: fixed;
+        background: #003366;
+        text-align: center;
+        background-image: url(bg.jpg);
+}
+#bg{/*This section controls how the main section were all the information can be found is, uses <div> command*/
+    position: relative;
+    height: 768px;
+    background-color: black;
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 64px;
+    background-image: url(mad-space.gif);
+}
+#WelcomeToHell
+{
+    position: relative;
+    height: 256px;
+    width: 992px;
+    background-color: pink;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 64px;
+    background-image: url(tribal.gif);
+}
+#about
+{
+    position: relative;
+    width: 256px;
+    height: 232px;
+    margin-left: 16px;
+    margin-top: 16px;
+    background-color: blue;
+    overflow: hidden;
+    background-image: url(cubes.gif);
+}
+#experience
+{
+    background-image: url(flash.gif);
+    width: 720px;
+    height: 232px;
+    margin-left: 288px;
+    margin-top: -248px;
+    background-color: blue;
+}
+#thoughts
+{
+    background-image: url(smile.gif);
+    overflow: hidden;
+    width: 992px;
+    height: 232px;
+    margin-left: 16px;
+    margin-top: 16px;
+    background-color: blue;
+}
+#verticalnav{
+    position: absolute;
+    width: 128px;
+    height: 512px;
+    background-color: pink;
+    left: 1%;
+    top: 25%;
+}
+/*The text class, is acurately termed "Nineties". It makes everything white,
+centered and comic sans, just to make the viewers eyes bleed.*/
+.Nineties{
+    color:white;
+    font-family:Comic Sans MS;
+    text-align: center;
+}
+img.center/*class that deals with keeping the images centered*/
+{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+/*Color links a nice gay pink*/
+a{
+    color: #ff00ff;
+}
+/*When you hover over the links, they go orange, because what color contrasts
+pink worse than orange?*/
+a:hover{
+    color: green;
+}
+/*Format lists to align their text to the left, since everything else is going
+to be centered and they look shittier when they're aligned to the side!'*/
+ul{
+    text-align: left;
+}
+.button{
+background-color: black;
+border: 1px solid #666;
+color: #fff;
+text-decoration: none;
+width: 100%;
+font-size: 16px;
+padding: 5px;
+margin-top: auto;
+margin-bottom: auto;
+
+}
+/*end of sheet*/

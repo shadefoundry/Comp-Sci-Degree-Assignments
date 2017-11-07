@@ -1,0 +1,51 @@
+/*Beginning of sheet*/
+/*This css sheet was designed by Kevin Lopez for the Scripting and Web Languages
+class. The title "Captain Morgan.css" is a reference to both the spiced rum
+(which I am a fan of) as well as the song "Captain Morgan's Revenge", by the
+band Alestorm.*/
+body{/*class that deals with body text, basic formatting*/
+    margin: 0;/*no margins!*/
+    padding: 0;
+    border: 0;/*sets border to nothing*/
+    overflow: hidden; /*hides overflows*/
+    height: 100%; 
+    max-height: 100%;
+    background: green;
+    color: white;
+    font-family:Chiller;
+    font-size: 20px;
+    background-image: url("spookbg.gif");
+}
+#header{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background: pink;
+    top: 0;
+    background-image: url("mad-space.gif");
+    padding: 15px;
+}
+#footer{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background: pink;
+    bottom: 0;
+    text-align: center;
+    background-image: url("mad-space.gif");
+}
+#maincontent{
+    position:relative;
+    width: 800px;
+    height: 600px;
+    background: #003366;
+    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.imagepadding{
+    border: solid;
+    border-color: transparent;
+    border-width: 25px;
+}

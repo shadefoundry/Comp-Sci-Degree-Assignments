@@ -1,0 +1,6 @@
++aardvark
+-apple
++apple
++telephone
++umbrella
+-telephone

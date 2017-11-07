@@ -1,0 +1,184 @@
+/*Beginning of sheet*/
+body{/*class that deals with body text, basic formatting*/
+    margin: 0;/*no margins!*/
+    padding: 0;
+    border: 0;/*sets border to nothing*/
+    overflow: hidden; /*hides overflows*/
+    height: 100%; 
+    max-height: 100%;
+}
+
+/*Div Ids*/
+#logo
+{
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    right: 0;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    width: 275px;
+    /*max-width: 1024px;*/
+    height:60px;
+    overflow: hidden;
+    /*z-index: 9998;/*brings it farther forward than the main content, so it's
+                  effectively "above" the web page*/
+}
+
+#framecontentTop{/*This section controls how the header looks, uses <div> command*/
+    position: absolute; /*secures the position*/
+    top: 0; 
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 980px;
+    z-index: 9999;/*brings it farther forward than the main content, so it's
+                  effectively "above" the web page. Think like Photoshop Layers.*/
+    height: 64px; /*Height of top frame div*/
+    border-style: solid;
+    border-width: 1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: #111;
+}
+
+#topbg{/*This section controls how the header looks, uses <div> command*/
+    position: fixed; /*secures the position*/
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 9997;/*brings it farther forward than the main content, so it's
+                  effectively "above" the web page. Think like Photoshop Layers.*/
+    height: 64px; /*Height of top frame div*/
+    background-color: #101820;/*Background color for the header.*/
+    border-style: solid;
+    border-width: 1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: #111;
+    box-shadow: 0px 5px 5px #111;
+}
+
+#framecontentBottom{/*This section controls how the header looks, uses <div> command*/
+    position: fixed; /*secures the position*/
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    z-index: 9999;/*brings it farther forward than the main content, so it's
+                  effectively "above" the web page. Think like Photoshop Layers.*/
+    height: 64px; /*Height of top frame div*/
+    background-color: #101820;/*Background color for the header.*/
+    border-style: solid;
+    border-width: 1px;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-color: #111;
+    box-shadow: 0px -5px 5px #111;
+}
+
+#maincontent{/*This section controls how the main section were all the information can be found is, uses <div> command*/
+    position: relative; /*stops the area from being changed*/
+    overflow: scroll;
+    max-width: 980px;
+    background: #203040;/*main background color*/
+    /*background-image:url(img/mainbg.jpg);*/
+    background-repeat: repeat;
+    background-position:center;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    height: 100%;
+    margin: auto;
+    box-shadow: 5px 5px 5px #111;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #111;
+}
+
+#bgcontent{/*This section controls how the main section were all the information can be found is, uses <div> command*/
+    position: fixed; /*stops the area from being changed*/
+    top: -200px; /*starts were the header ends*/
+    left: 0;
+    right: 0;
+    bottom: 0px; /*ends were the footer starts*/
+    overflow: hidden; 
+    background:#182434 /*url(img/bg.jpg)*/;
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+/*Classes*/
+.main/*class that deals with formatting the text when i set the class to "main"*/
+{
+    color:white;
+    font-family:Times New Roman;
+    text-align:center;
+}
+.text/*class that deals with formatting the text when i set the class to "main"*/
+{
+    color:white;
+    font-family:Times New Roman;
+}
+.alignright
+{
+    text-align:right;
+}
+img.center/*third class that deals with keeping the images centered*/
+{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+img.left
+{
+    display:block;
+    margin-left:auto;
+}
+
+.button
+{
+    font-size:150%;
+    color: white;
+    height: 48px;
+    margin-top: -8px;
+    /*width: 128px;*/
+    width: 8%;
+    background: #101820;/*linear-gradient(#555, black); /* Standard syntax (must be last) */
+    border: none;
+    font-family: beleren;
+}
+.button:hover
+{
+    background: #202E38;/*2C4050;/*linear-gradient(#666, black); /* Standard syntax (must be last) */
+    color: white;
+    cursor: pointer;
+}
+.button:active
+{
+    background: #202E38;/*linear-gradient(#444, black); /* Standard syntax (must be last) */
+    font-size: 145%;
+}
+.maincontent
+{
+    margin-top: 96px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 72px;
+}
+
+/*Customization stuff (custom fonts, etc.)*/
+::-webkit-scrollbar { 
+    display: none; /*Hide the scroll bar while still enabling scrolling
+    Not compatible with Edge, Explorer, Firefox.*/
+}
+
+@font-face{
+    font-family: beleren;
+    src: url(beleren-bold-webfont.ttf);
+}
+/*end of sheet*/

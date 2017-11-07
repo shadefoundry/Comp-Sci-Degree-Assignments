@@ -1,0 +1,139 @@
+/*Beginning of sheet*/
+body{/*class that deals with body text, basic formatting*/
+        margin: 0;/*no margins!*/
+        padding: 0;
+        border: 0;/*sets border to nothing*/
+        overflow: hidden; /*hides overflows*/
+        height: 100%; 
+        max-height: 100%;
+}
+
+#logo
+{
+        width:275px;
+        height:60px;
+        top:-5px;
+        left:0%;
+        right:0%;
+        overflow: hidden;
+        position: fixed;
+        z-index: 9999;
+}
+
+#framecontentTop{/*This section controls how the header looks, uses <div> command*/
+    position: fixed; /*secures the position*/
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    height: 64px; /*Height of top frame div*/
+    background-color: black;/*Background color for the header (Just used for development, it's covered by the gradient.*/
+    color: white;/*extra color, this is underneath the header*/
+    background: -webkit-linear-gradient(#555, black); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#555, black); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#555, black); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#555, black); /* Standard syntax (must be last) */
+}
+
+#sidecontent{
+        position: relative; /*secures the position*/
+        top: 64px; 
+        width: 10%;
+        height: 100%; /*Height of top frame div*/
+        overflow: auto; /*Disable scrollbars.*/
+        background-color: black;/*Background color for the header (Just used for development, it's covered by the gradient.*/
+        margin-left: auto;
+        margin-right: auto;
+}
+
+::-webkit-scrollbar { 
+    display: none; /*Hide the scroll bar while still enabling scrolling
+    Not compatible with Edge, Explorer, Firefox.*/
+}
+#maincontent{/*This section controls how the main section were all the information can be found is, uses <div> command*/
+        position: relative; /*stops the area from being changed*/
+        /*bottom: 0%; /*ends were the footer starts*/
+        overflow: scroll;
+        max-width: 1024px;
+        background: black;/*main background color*/
+        background-image:url(img/mainbg.jpg);
+        background-repeat: repeat;
+        background-position:center;
+        /*margin-left: auto;
+        margin-right: auto;*/
+        height: 100%;
+        margin: auto;
+}
+
+#bgcontent{/*This section controls how the main section were all the information can be found is, uses <div> command*/
+        position: fixed; /*stops the area from being changed*/
+        top: -200px; /*starts were the header ends*/
+        left: 0;
+        right: 0;
+        bottom: 0px; /*ends were the footer starts*/
+        overflow: hidden; 
+        background:#000 url(img/bg.jpg);
+        background-repeat: no-repeat;
+        background-position:center;
+
+}
+#banner{
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 128px;
+    background-color: black;
+}
+.innertube{
+        margin: 15px; /*Margins for inner DIV inside each DIV (to provide padding)*/
+}
+
+* html body{ /*IE6 hack*/
+        padding: 50px 0 0px 0; /*Set value to (HeightOfTopFrameDiv 0 HeightOfBottomFrameDiv 0)*/
+}
+
+* html #maincontent{ /*Makes stuff work with IE6*/
+        height: 100%; 
+        width: 100%; 
+}
+.main/*class that deals with formatting the text when i set the class to "main"*/
+{
+        color:white;
+        font-family:Times New Roman;
+        text-align:center;
+        opacity:1.0;
+}
+.text/*class that deals with formatting the text when i set the class to "main"*/
+{
+        color:white;
+        font-family:Times New Roman;
+}
+.alignright
+{
+        text-align:right;
+}
+img.center/*third class that deals with keeping the images centered*/
+{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+}
+
+img.left
+{
+        display:block;
+        margin-left:auto;
+}
+
+
+.button
+{
+        font-size:15px;
+}
+.maincontent
+{
+    margin-top: 96px;
+}
+/*end of sheet*/

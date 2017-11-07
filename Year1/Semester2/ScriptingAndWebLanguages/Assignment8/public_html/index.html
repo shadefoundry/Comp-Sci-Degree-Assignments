@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lab8_Lopez_Kevin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <script>
+            var imgNo = 0;
+            function onClick(imgNo) {
+                var image = document.getElementById('imgID');
+                if (imgNo === 1) {
+                    document.getElementById('backward').disabled = false;
+                    image.src = "1.jpg";
+                    document.getElementById('forward').disabled = false;
+                } else if (imgNo === 2) {
+                    image.src = "2.jpg";
+                    document.getElementById('forward').disabled = false;
+                } else if (imgNo === 3) {
+                    image.src = "3.jpg";
+                    document.getElementById('forward').disabled = false;
+                } else if (imgNo >= 4) {
+                    imgNo = 4;
+                    image.src = "4.jpg";
+                    document.getElementById('forward').disabled = true;
+                } else {
+                    imgNo = 0;
+                    image.src = "0.jpg";
+                    document.getElementById('backward').disabled = true;
+                }
+            }
+        </script>
+        <button id="backward" onclick="onClick(imgNo -= 1)" disabled><img src="bck.png" alt="Backward"></button>
+        <img id="imgID" onclick="onClick(imgNo += 1)" src="0.jpg" alt="image">
+        <button id="forward" onclick="onClick(imgNo += 1)"><img src="fwd.png" alt="Forward"></button>
+    </body>
+</html>
