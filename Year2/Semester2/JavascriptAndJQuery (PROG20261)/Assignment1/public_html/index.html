@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            #blueSquare{
+                background-color: blue;
+                position: absolute;
+                border-style: solid;
+            }
+            #redSquare{
+                background-color: red;
+                position: absolute;
+                border-style: solid;
+            }
+            .container{
+                height:95vh;
+                width: 95vh;
+                position: relative;
+            }
+            .blue{
+
+            }
+            .red{}
+        </style>
+    </head>
+    <body>
+        <button id="addBlue" value="blue" class="blueButton">Add Blue</button>
+        <button id="addRed" value="red" class="redButton">Add Red</button>
+        <button id="removeBlue" value="blue">Remove Blue</button>
+        <button id="removeRed" value="red">Remove Red</button>
+        <button id="removeAll" value="all">Remove All</button>
+
+        <!-- Remember: you can only modify code inside <style></style> and code inside <script></script> below. --> 
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log("ready!");
+                //append to body class container
+                $("body").addClass("container");
+                //set container width to width-50
+                $(".container").css("max-height", $(window).innerHeight() - 50);
+                //set container height to height-50
+                $(".container").css("max-width", $(window).innerWidth() - 50);
+            });
+            //getrandom function
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            $("#addBlue").click(function () {
+                console.log("called the addblue function!");
+                
+
+                //two random ints for height and width
+                var wsize = getRandomInt(1, $(window).innerWidth() - 50);
+                var hsize = getRandomInt(1, $(window).innerHeight() - 50);
+
+                $("body").append("<div id=\"blueSquare\" class=\"blue\"></div>");
+
+                //set box size
+                $(".blue").last().css("height", hsize);
+                $(".blue").last().css("width", wsize);
+                
+                //set positioning
+                $(".blue").last().css("left", wsize);
+                $(".blue").last().css("top", hsize);
+            });
+            
+            $("#removeBlue").click(function(){
+                $("div.blue").last().remove();
+            });
+            
+            //addRed function
+            $("#addRed").click(function () {
+                console.log("called the addred function!");
+
+                //two random ints for height and width
+                var wsize = getRandomInt(1, $(window).innerWidth() - 50);
+                var hsize = getRandomInt(1, $(window).innerHeight() - 50);
+
+                $("body").append("<div id=\"redSquare\" class=\"red\"></div>");
+
+                //set box size
+                $(".red").last().css("height", hsize);
+                $(".red").last().css("width", wsize);
+
+                //set font size
+                $(".red").last().css("font-size", hsize);
+
+                //set positioning
+                $(".red").last().css("left", wsize);
+                $(".red").last().css("top", hsize);
+            });
+            
+            //removeRed function
+            $("#removeRed").click(function(){
+                $("div.red").last().remove();
+            });
+            $("#removeAll").click(function(){
+                $('.blue').remove();
+                $('.red').remove();
+            });
+        </script>
+    </body>
+
+</html>

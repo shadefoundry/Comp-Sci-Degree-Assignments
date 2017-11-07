@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+        <script src="js/jquery-1.12.4.min.js"></script>
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <title>Assignment 2</title>
+    </head>
+    <body>
+        <div id="home" data-role="page">
+            <div role="main" class="ui-content">
+                <div class="ui-field-contain">
+                    <label for="first-name">Full Name</label>
+                    <!--Text input for Name-->
+                    <input type="text" name="first-name" id="firstName">
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="email">Email</label>
+                    <!--Text input for Email-->
+                    <input type="text" name="email" id="email">
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="age-slider">Age:</label>
+                    <!--Slider for Age-->
+                    <input id="ageSlider" value="20" min="0" max="100" type="range">
+
+                </div>
+
+                <div id="take-photo-label">
+                    <br>
+                    <label>Photo:</label>
+                </div>
+                <div class="ui-grid-a" style="height:auto">
+                    <div class="ui-block-a" style="height:100%">
+                        <!--Take a photo. If there's already 
+                        one existing it's overwritten-->
+                        <a id="takePhoto" class="ui-btn ui-icon-camera ui-btn-icon-left" href="#">Click to Upload</a>
+                    </div>
+                    <div class="ui-block-b" style="height:100%">
+                        <!--Delete the picture we just took 
+                        without saving it-->
+                        <a class="ui-btn ui-icon-delete ui-btn-icon-left ui-state-disabled" id="deletePhoto">Delete Photo</a>
+                    </div>
+                </div>
+                <div id="imageUploaded">
+                    <label>Uploaded:</label>
+                    <img id="img" class="img-responsive" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                </div>
+                <!--Save text and image location string to
+                database to be retrieved when get-info 
+                button is clicked-->
+                <a class="ui-btn ui-icon-star ui-btn-icon-left" id="saveInfo">Save Info</a>
+                <!--Load info from database that corresponds
+                to the entered value in one of the textboxes,
+                if that data exists-->
+                <a class="ui-btn ui-icon-action ui-btn-icon-left" id="getInfo">Get Info</a>
+                <!--clears form but data that's saved iss
+                still in the database-->
+                <a class="ui-btn ui-icon-recycle ui-btn-icon-left" id="clearForm">Clear Form</a>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            //defer setup of page to set up and connect to database
+            //I have no way to test this since my android studio broke
+            //and I have yet to fix it  
+            var jqmReady = $.Deferred();
+            var pgReady = $.Deferred();
+            var db = null;
+
+            $(document).on("pagecreate", jqmReady.resolve);
+            document.addEventListener("deviceready", pgReady.resolve, false);
+            // window.addEventListener("load",pgReady.resolve,false);
+
+            $.when(jqmReady, pgReady).then(function () {
+
+                // Create connection to SQLite database
+                db = window.sqlitePlugin.openDatabase({name: 'student.db', location: 'default'});
+                var $email = $('#email');
+                var $name = $('#firstName');
+                var imgLink = document.getElementById('img');
+                var $image = imgLink.src;
+                var $age = $('#ageSlider');
+                //I don't know what this ones for but im scared to remove it
+                var $pop = $("#pop");
+
+                // We are going to execute a few transactions. This is for demo only!
+                // Use tutorial: https://github.com/litehelpers/Cordova-sqlite-storage#readme
+                db.transaction(function (tx) {
+                    // Create table "Student" where we'll keep all students
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Student (email TEXT PRIMARY KEY, name TEXT, image TEXT, age INT)');
+                }, function (error) {
+                    showPopup("Error: Can't access database!");
+
+                }, function () {
+                    showPopup("Database connected!");
+                });
+
+                //set the click function for the get info
+                $('#getInfo').click(function (event) {
+                    // We need this line to prevent default "submit" action on the buttons
+                    event.preventDefault();
+
+                    // Check that email not empty!
+                    var email = $email.val();
+                    var name = $name.val();
+                    if (email.length < 3) {
+                        showPopup("Email is too short!");
+                        return;
+                    }
+                    //now check the name isn't empty
+                    else if (name.length < 1) {
+                        showPopup("Please enter a name!");
+                        return;
+                    }
+
+                    // Here we assume that email does exist. It's not always the case! 
+                    db.executeSql('SELECT name FROM Student WHERE email LIKE "' + email + '"', [], function (rs) {
+                        $name.val(rs.rows.item(0).name);
+                        $image.val(rs.rows.item(0).image);
+                        $age.val(rs.rows.item(0).age);
+
+                    }, function (error) {
+                        showPopup("Can't find email " + email);
+                    });
+
+                });
+
+                //function to save info assuming it's there
+                $('#saveInfo').click(function (event) {
+                    var email = $email.val();
+                    var name = $name.val();
+                    var image = $image.src;
+                    var age = $age.val();
+                    //insert values into database
+                    tx.executeSql('INSERT INTO Student VALUES (?,?)', [email, name, image, age]);
+                });
+
+            });
+
+            window.addEventListener("load", function load(event) {
+                window.removeEventListener("load", load, false); //remove: no longer needed
+                document.addEventListener('deviceready', onDeviceReady, false);
+            }, false);
+
+            function onDeviceReady() {
+                //add click events to buttons we have
+                document.getElementById("takePhoto").addEventListener("click", takePhoto);
+                document.getElementByID("deletePhoto").addEventListener("click", deletePhoto);
+                document.getElementByID("saveInfo").addEventListener("click", saveInfo);
+                //hide image uploaded label on start
+                $('div[id="imageUploaded"]').hide();
+            }
+
+            function clearForm() {
+                //clear bloody everything back to defaults
+                document.getElementById('firstName').text("");
+                document.getElementById('email').text("");
+                var image = document.getElementById('img');
+                // set blank image to imageData
+                image.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+                document.getElementByID('age').slider("refresh");
+            }
+
+            function takePhoto() {
+                var options = {
+                    //camera settings. these are defaults given in class
+                    quality: 25,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    cameraDirection: Camera.Direction.FRONT,
+                    encodingType: Camera.EncodingType.JPEG,
+                    correctOrientation: true,
+                    allowEdit: true
+                };
+                navigator.camera.getPicture(cameraSuccess, cameraError, options);
+            }
+
+            function cameraSuccess(imageData) {
+                var image = document.getElementById('img');
+                var deleteButton = document.getElementByID("deletePhoto");
+                // set blank image to imageData
+                image.src = imageData;
+                //change deleteButton's class to not be disabled
+                deleteButton.removeClass("ui-state-disabled");
+                $('div[id="imageUploaded"]').show();
+            }
+
+            function cameraError(errorData) {
+                //show error popup
+                showPopup("Error: " + JSON.stringify(errorData));
+            }
+
+            function deletePhoto() {
+                //reset image source so it's blank, disable delete button
+                var image = document.getElementById('img');
+                var deleteButton = document.getElementByID("deletePhoto");
+
+                image.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+                deleteButton.addClass("ui-state-disabled");
+            }
+
+            //popup code, called with showPopup("popup text here");
+            function showPopup(msg) {
+                $pop.html("<p>" + msg + "</p>").popup("open");
+                setTimeout(function () {
+                    $pop.popup("close");
+                }, 1000);
+            }
+
+        </script>
+    </body>
+</html>
