@@ -1,4 +1,5 @@
 About
+*The full Cordova application is in the zip file. The basic web app is in the folder
 *This application is a browser for the card game Magic the Gathering
 *It allows for quick browsing of the different cards that exist in the game and featueres some options for filtering by card type, set, etc.
 *The application is built on the Cordova Framework and so uses a combination of HTML5 and JavaScript to function
