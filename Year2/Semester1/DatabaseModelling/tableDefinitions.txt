@@ -1,0 +1,72 @@
+CREATE TABLE Tires
+(
+ProductID int NOT NULL,
+ModelName varchar(255) NOT NULL,
+FactoryID int NOT NULL,
+WarehouseID int NOT NULL
+)
+/
+CREATE TABLE TireModel
+(
+ProductID int NOT NULL,
+ModelName varchar(255) NOT NULL,
+Size int NOT NULL,
+Price double(255,2) NOT NULL,
+CategoryName varchar(255) NOT NULL
+)
+/
+CREATE TABLE Office
+(
+OfficeID int NOT NULL,
+Location varchar(255) NOT NULL
+)
+/
+CREATE TABLE Promotion
+(
+PromotionID int NOT NULL,
+StartDate date NOT NULL,
+EndDate date NOT NULL,
+DistributorID int NOT NULL
+)
+/
+CREATE TABLE Warehouse
+(
+WarehouseID int NOT NULL,
+FactoryID int NOT NULL,
+DistributorID int NOT NULL,
+ProductID int NOT NULL
+)
+/
+CREATE TABLE Groups
+(
+GroupNumber int NOT NULL,
+GroupLeader varchar(255) NOT NULL
+)
+/
+CREATE TABLE CustomerInfo(
+CustomerID int NOT NULL,
+FirstName varchar(255) NOT NULL,
+LastName varchar(255) NOT NULL,
+Email varchar(255) NOT NULL,
+Phone# int(10) NOT NULL,
+ProductID int NOT NULL
+)
+/
+CREATE TABLE Distributor(
+DistributorID int NOT NULL,
+RepID int NOT NULL,
+Location varchar(255) NOT NULL,
+PromotionID int NOT NULL,
+WarehouseID int NOT NULL,
+ProductID int NOT NULL
+)
+/
+CREATE TABLE Factory(
+FactoryID int NOT NULL,
+ProductID int NOT NULL,
+WarehouseID int NOT NULL
+)/
+CREATE TABLE ProductToDistributor(
+ProductID int NOT NULL,
+DistributorName varchar(255) NOT NULL
+);

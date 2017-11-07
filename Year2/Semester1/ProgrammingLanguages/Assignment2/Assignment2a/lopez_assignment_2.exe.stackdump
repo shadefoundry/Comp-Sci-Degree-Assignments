@@ -1,0 +1,7 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=61151440
+eax=0061C9D4 ebx=00000001 ecx=00000001 edx=00000001 esi=611BFE20 edi=0061D51C
+ebp=61151420 esp=0061C90C program=C:\Users\Kevin\Documents\OneDrive\Programming Languages\Lopez_Assignment_2\dist\Debug\Cygwin-Windows\lopez_assignment_2.exe, pid 13932, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+End of stack trace

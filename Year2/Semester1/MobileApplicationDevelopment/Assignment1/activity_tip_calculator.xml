@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.link491.tipcalculator.TipCalculator">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:id="@+id/set_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_initialAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Amount"
+                android:inputType="numberDecimal" />
+
+            <CheckBox
+                android:id="@+id/chk_AddHST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Add HST"
+                android:onClick="resetViewPriceDisplays" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tip_setter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txt_tipPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tip %"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/txt_tipValueDisplay"
+                android:layout_width="0.15dp"
+                android:layout_weight="0.15"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="right"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <SeekBar
+                android:id="@+id/slider_tip"
+                android:layout_width="0.85dp"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="0"
+                android:layout_gravity="center"
+                android:indeterminate="false"
+                android:layout_weight="0.85" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tip_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_tip10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tip 10%"
+                android:onClick="setTip10"></Button>
+
+            <Button
+                android:id="@+id/btn_tip15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tip 15%"
+                android:onClick="setTip15"></Button>
+
+            <Button
+                android:id="@+id/btn_tip20"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tip 20%"
+                android:onClick="setTip20"></Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/num_people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txt_splitBill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="# of People"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/spin_numPeople"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.40"
+                android:entries="@array/num_people" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calculate_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btn_Calculate"
+                android:layout_width="221dp"
+                android:layout_height="wrap_content"
+                android:onClick="Calculate"
+                android:text="Calculate" />
+
+            <Button
+                android:id="@+id/btn_Clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="clearAll"
+                android:text="Clear" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_tipAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tip Amount: $"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/txt_div1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/txt_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: $"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/txt_div2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/txt_amtPerPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Per Person: $"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
