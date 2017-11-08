@@ -152,7 +152,7 @@ public class TipCalculator extends AppCompatActivity implements SeekBar.OnSeekBa
             //this is the tip amount
             int x = slider_tip.getProgress();
             int splitBill = Integer.parseInt(y);
-            double hst = 0.13;
+            double hst = 0.07;
             double tip = Double.valueOf(roundCents.format(x*0.01));
             double finalHST = Double.valueOf(roundCents.format(enteredPrice*hst));
             double finalTip = Double.valueOf(roundCents.format(enteredPrice*tip));
