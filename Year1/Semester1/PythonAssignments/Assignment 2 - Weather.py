@@ -1,6 +1,6 @@
 __author__ = 'link491'
 #Program due September 24, 2015
-#Coded by Kevin Lopez, ~link491
+#Coded by Kevin Lopez
 #Design and write a Python program which asks, from the user,
 #information about the whether and then uses logic to inform the user on how to dress.
 #From the user, you must ask for at least the following information:
