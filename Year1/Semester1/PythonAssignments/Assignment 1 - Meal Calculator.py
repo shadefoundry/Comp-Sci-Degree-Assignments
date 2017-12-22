@@ -1,5 +1,5 @@
 #Program due September 17, 2015
-#Coded by Kevin Lopez, ~link491
+#Coded by Kevin Lopez
 #This program will calculate the total price of a meal after having the data entered by the user
 #get the price and tips, force them to be floats because its only fun if i force my will on the code
 price=float(input("Please enter the price"))
